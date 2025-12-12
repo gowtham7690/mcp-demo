@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+
 // tool.js — a minimal MCP-compatible math tool
 
 const express = require('express');

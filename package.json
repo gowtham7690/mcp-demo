@@ -1,6 +1,21 @@
 {
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "pino": "^10.1.0"
+  },
+  "scripts": {
+    "start:tool": "cross-env TOOL_PORT=3001 node tool.js",
+    "start:string-tool": "cross-env STRING_TOOL_PORT=3002 node string-tool.js",
+    "start:broker": "cross-env BROKER_PORT=3000 node broker.js",
+    "start:agent": "cross-env BROKER_URL=http://localhost:3000/mcp node agent.js",
+    "dev": "npx concurrently \"npm run start:tool\" \"npm run start:string-tool\" \"npm run start:broker\" \"timeout /t 1 /nobreak & npm run start:agent\"",
+    "run-demo": "./run-demo.sh",
+    "smoke": "./scripts/run-smoke.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0"
   }
 }
